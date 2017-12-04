@@ -14,7 +14,6 @@ public class GlobalVariables : MonoBehaviour {
     public Transform RHandTransform;
 
     public float globalTime;
-    public Recorder recorder;
 
     private void Awake()
     {
