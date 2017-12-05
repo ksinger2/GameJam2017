@@ -128,7 +128,7 @@ public class RecorderAlt : MonoBehaviour {
 
     void PlayBack()
     {
-        Debug.Log("PlayingBack");
+       // Debug.Log("PlayingBack");
         reInit = true;
         if (indexOfPlaybacks < maxPlaybacks)
         {

@@ -10,7 +10,7 @@ public class PlaybackItem : MonoBehaviour {
     private int _currFrame;
     private int _frameCount = 1;
 
-    private int _lastIndex = 0;
+    private int _lastIndex = -1;
     private RecorderAlt.typeOfLoop loopType;
 
     private void Start()
@@ -21,14 +21,18 @@ public class PlaybackItem : MonoBehaviour {
         loopType = RecorderAlt.instance.loopType;
         for (int i = 0; i < preRecordedData.Length; i++)
         {
-            if (preRecordedData[i].scale == Vector3.zero) break;
-            _lastIndex++;
+            if (preRecordedData[i].scale == Vector3.zero)
+            {
+                _lastIndex = i-1;
+                break;
+            }
+
         }
     }
 
     public void Update()
     {
-        if (_currFrame > _lastIndex)
+        if (_currFrame >= _lastIndex)
         {
             if (loopType == RecorderAlt.typeOfLoop.JUMPTO) _currFrame = 0;
             else if (loopType == RecorderAlt.typeOfLoop.PINGPONG) _frameCount = -1;
